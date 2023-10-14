@@ -14,27 +14,14 @@ def get_ingredients(product_name):
     if response.status_code == 200:
         data = response.json()
         
-        # Check each food entry for 'foodContentsLabel'.
         for hint in data.get('hints', []):
             food_data = hint.get('food', {})
             if 'foodContentsLabel' in food_data:
-                # When found, return the label, ingredients, and image URL.
                 product_label = food_data.get('label', '')
                 ingredients = food_data.get('foodContentsLabel', '')
-                image_url = food_data.get('image', '')  # assuming 'image' contains the image URL
-                return product_label, ingredients, image_url
-        
-        # If loop completes with no return, it means 'foodContentsLabel' was not found in any entry.
-        print("No results found for ingredients.")
-        return None, None
+                image_url = food_data.get('image', '')
+                return f"Product: {product_label}\nIngredients: {ingredients}\nImage: {image_url}"
 
+        return "No results found for ingredients."
     else:
-        print(f"Failed to retrieve data: {response.status_code}, {response.reason}")
-        return None, None
-# Example usage
-product_name = "cocoa puffs"  # replace with the actual product name you're querying
-product_label, ingredients, image_url = get_ingredients(product_name)
-if product_label and ingredients:
-    print(f"Product: {product_label}\nIngredients: {ingredients}\nImage: {image_url}")
-else:
-    print("Could not fetch ingredients.")
+        return f"Failed to retrieve data: {response.status_code}, {response.reason}"
