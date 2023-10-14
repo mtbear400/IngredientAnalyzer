@@ -8,8 +8,10 @@ import os
 # EDAMAM_APP_ID = os.getenv('EDAMAM_APP_ID')
 
 # Hardcoded for dev but DELETE before pushing to git
+
 OPENAI_API_KEY = ""
 EDAMAM_API_KEY = ""
 EDAMAM_APP_ID = ""
+
 
 # You can also include other configuration constants here
