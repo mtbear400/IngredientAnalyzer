@@ -2,7 +2,7 @@
 import streamlit as st
 import openai
 from settings import OPENAI_API_KEY
-from functions import extract_and_get_ingredients  # Make sure to use the correct import statement for your file structure.
+from functions import extract_and_get_ingredients  # Adjust this import statement as necessary.
 
 st.title("Royal Taster")
 
@@ -21,12 +21,20 @@ for message in st.session_state.messages:
 
 if prompt := st.chat_input("What food should I check out?"):
     st.session_state.messages.append({"role": "user", "content": prompt})
-    
+
     # Extract product info and get ingredients
     product_string = extract_and_get_ingredients(prompt, OPENAI_API_KEY)
+
+    # Parse the product_string for display
+    product_details, image_url = product_string.rsplit("\nImage: ", 1)
     
     with st.chat_message("user"):
         st.markdown(prompt)
+
+    # Display the product details
+    with st.chat_message("assistant"):
+        st.markdown(product_details)
+        st.image(image_url)  # Uncomment this to display the image
 
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
