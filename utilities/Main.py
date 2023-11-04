@@ -1,4 +1,5 @@
-# to use in terminal: streamlit run FILEPATH streamlit run c:/Users/matth/AgentProjects/IngredientsAgent/IngredientAnalyzer/utilities/Main2.py
+# to use in terminal: streamlit run FILEPATH 
+
 import streamlit as st
 import openai
 from settings import OPENAI_API_KEY
@@ -9,7 +10,7 @@ st.title("Royal Taster")
 # Set OpenAI API key
 openai.api_key = OPENAI_API_KEY
 
-if "openai_model" not in st.session_state:
+if "openai_model" not in st.session_state: 
     st.session_state["openai_model"] = "gpt-4"
 
 if "messages" not in st.session_state:

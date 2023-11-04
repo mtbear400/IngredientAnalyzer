@@ -20,7 +20,7 @@ def extract_and_get_ingredients(user_input: str, openai_api_key: str) -> str:
     try:
         openai.api_key = openai_api_key  # Set the API key here
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",  # gpt-4 isn't available, use gpt-3.5-turbo or another available model
+            model="gpt-3.5-turbo",  
             messages=[
                 {"role": "system", "content": "You are a helpful assistant."},
                 {"role": "user", "content": prompt}
