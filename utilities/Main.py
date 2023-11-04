@@ -2,12 +2,13 @@
 
 import streamlit as st
 import openai
-from settings import OPENAI_API_KEY
 from functions import extract_and_get_ingredients  # Adjust this import statement as necessary.
+import os
 
 st.title("Royal Taster")
 
 # Set OpenAI API key
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 openai.api_key = OPENAI_API_KEY
 
 if "openai_model" not in st.session_state: 

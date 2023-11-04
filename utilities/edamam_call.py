@@ -1,5 +1,8 @@
 import requests
-from settings import EDAMAM_API_KEY, EDAMAM_APP_ID
+import os
+
+EDAMAM_API_KEY = os.getenv('EDAMAM_API_KEY')
+EDAMAM_APP_ID = os.getenv('EDAMAM_APP_ID')
 
 def get_ingredients(product_name):
     url = "https://api.edamam.com/api/food-database/v2/parser"

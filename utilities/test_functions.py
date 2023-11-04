@@ -1,5 +1,6 @@
 from functions import extract_and_get_ingredients  # adjust the import according to your project structure
-from settings import OPENAI_API_KEY
+import os
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 # The OpenAI API Key should be stored securely, or use environment variables to keep them out of your codebase.
 
 
